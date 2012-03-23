@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>autopybook</title>
+    <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+<body style="background:lightgray;margin:0;">
+    <textarea style="border:2px solid black;margin:80px;padding:5px;font-family:'Courier New';font-size:18px;">{{initial_text}}</textarea>
+    <div id="status" style="text-align:right;margin:-80px 107px 0 0;font-family:Arial;font-weight:bold;font-size:20px;color:green;"></div>
+    <script type="text/javascript">
+        function adjustTextareaSize() {
+            $('textarea')
+                .width(0)
+                .height(0);
+            $('textarea')
+                .width($(document).width() - 200)
+                .height($(document).height() - 200);
+        }
+        $(adjustTextareaSize);
+        $(window).resize(adjustTextareaSize);
+        $(function() {
+            $('textarea').keyup(function() {
+                if (window.changed_timeout) {
+                    window.clearTimeout(window.changed_timeout);
+                }
+                window.changed_timeout = window.setTimeout(function() {
+                    $('#status').text('Saving...');
+                    $.post('/', $('textarea').val(), function() { $('#status').text('Saved'); });
+                }, 250);
+            });
+        });
+    </script>
+</body>
+</html>
