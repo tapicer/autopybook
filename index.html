@@ -4,24 +4,29 @@
     <title>autopybook</title>
     <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type='text/javascript' src="jquery.filter_input.js"></script>
+    <style>
+        body { background:lightgray;margin:0; }
+        .top { font-family:Arial;margin:60px 0 -70px 80px; }
+        .top div { font-size:18px;float:left;margin-top:3px; }
+        .top input { border:1px solid black;font-size:14px;font-family:'Courier New';padding:3px; }
+        .top span { padding-left:5px;font-style:italic; }
+        textarea { border:2px solid black;margin:80px;padding:5px;font-family:'Courier New';font-size:18px; }
+        #status { text-align:right;margin:-80px 107px 0 0;font-family:Arial;font-weight:bold;font-size:20px;color:green; }
+    </style>
 </head>
-<body style="background:lightgray;margin:0;">
-    <div style="font-family:Arial;margin:60px 0 -70px 80px;">
-        <div style="font-size:18px;float:left;margin-top:3px;">id:&nbsp;</div>
-        <input type="text" style="border:1px solid black;font-size:14px;font-family:'Courier New';padding:3px;" value="{{initial_id}}"/>
+<body>
+    <div class="top">
+        <div>id:&nbsp;</div>
+        <input type="text" value="{{initial_id}}"/>
         <button>Load</button>
-        <span style="padding-left:5px;font-style:italic;">{{initial_expl}}</span>
+        <span>{{initial_expl}}</span>
     </div>
-    <textarea style="border:2px solid black;margin:80px;padding:5px;font-family:'Courier New';font-size:18px;">{{initial_text}}</textarea>
-    <div id="status" style="text-align:right;margin:-80px 107px 0 0;font-family:Arial;font-weight:bold;font-size:20px;color:green;"></div>
+    <textarea>{{initial_text}}</textarea>
+    <div id="status"></div>
     <script type="text/javascript">
         function adjustTextareaSize() {
-            $('textarea')
-                .width(0)
-                .height(0);
-            $('textarea')
-                .width($(document).width() - 200)
-                .height($(document).height() - 200);
+            $('textarea').width(0).height(0);
+            $('textarea').width($(document).width() - 200).height($(document).height() - 200);
         }
         $(adjustTextareaSize);
         $(window).resize(adjustTextareaSize);
@@ -53,10 +58,7 @@
                 $('textarea').focus();
                 //hack to focus at the end
                 var prev_val = $('textarea').val();
-                $('textarea')
-                    .val('')
-                    .val(prev_val)
-                    .scrollTop($('textarea')[0].scrollHeight);
+                $('textarea').val('').val(prev_val).scrollTop($('textarea')[0].scrollHeight);
             }
         });
     </script>
