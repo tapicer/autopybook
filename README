@@ -1,8 +1,10 @@
-autopybook is a simple standlone web notebook with autosave written in python.
+autopybook is a simple standlone web notebook with autosave written in Python.
 
 To use it just run
 
-    python run.py
+```
+python run.py
+```
 
 And make sure that the current user has write permissions on the current directory.
 
