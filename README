@@ -1,0 +1,11 @@
+autopybook is a simple standlone web notebook with autosave written in python.
+
+To use it just run
+
+    python run.py
+
+And make sure that the current user has write permissions on the current directory.
+
+Notes will be saved in separate files according to the chosen id.
+
+I like to keep my autopybook folder inside my Dropbox folder so my notes are automatically backed up.
