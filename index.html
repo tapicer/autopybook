@@ -40,7 +40,7 @@
                     window.changed_timeout = window.setTimeout(function() {
                         $('#status').text('Saving...');
                         $.post(location.pathname, $('textarea').val(), function() { $('#status').text('Saved'); });
-                    }, 250);
+                    }, 500);
                 });
             });
         }
